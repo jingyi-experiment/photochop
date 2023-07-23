@@ -94,4 +94,4 @@ def compare_images():
     return jsonify({"similarGroups": similar_info})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)

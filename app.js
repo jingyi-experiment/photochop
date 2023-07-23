@@ -1,21 +1,11 @@
 function uploadImages() {
-    const imageInput = document.getElementById("imageInput");
-    const uploadedImages = document.getElementById("uploadedImages");
-    uploadedImages.innerHTML = ""; // Clear previous uploaded images
+    // ... (same as previous code)
 
-    for (const file of imageInput.files) {
-        // Display Accepted Images
-        if (file.type.startsWith("image/")) {
-            const img = document.createElement("img");
-            img.src = URL.createObjectURL(file);
-            img.width = 200;
-            uploadedImages.appendChild(img);
-        }
-    }
+    // Store the selected files in a global variable for later use
+    window.uploadedFiles = imageInput.files;
 }
 
-function submitImages() {
-    const imageInput = document.getElementById("imageInput");
+async function submitImages() {
     const progressBar = document.getElementById("progressBar");
     const progressStatus = document.getElementById("progressStatus");
 
@@ -29,6 +19,28 @@ function submitImages() {
         if (progress >= 100) {
             clearInterval(interval);
             progressStatus.textContent = "Processing completed!";
+            // Call function to display the result after processing is complete
+            displayResult();
         }
     }, 1000);
+}
+
+async function displayResult() {
+    const resultContainer = document.getElementById("resultContainer");
+    resultContainer.innerHTML = ""; // Clear previous result
+
+    // Replace the following with actual API call to your Flask backend to get the results
+    // For illustration purposes, we're using a dummy result
+    const dummyResult = [
+        { group: "Group 1", description: "Scenery: Mountain view in the afternoon" },
+        { group: "Group 2", description: "Selfie: Couple selfie in the park" },
+        // Add more result items as needed
+    ];
+
+    for (const item of dummyResult) {
+        const resultItem = document.createElement("div");
+        resultItem.classList.add("result-item");
+        resultItem.textContent = `${item.group} - ${item.description}`;
+        resultContainer.appendChild(resultItem);
+    }
 }

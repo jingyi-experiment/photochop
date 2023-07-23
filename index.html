@@ -6,167 +6,116 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PhotoChoper</title>
     <style>
-        body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 20px;
-}
+         body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
 
-h1 {
-    color: #333;
-    text-align: center;
-}
+        h1 {
+            color: #333;
+            text-align: center;
+        }
 
-input[type="file"] {
-    display: none; /* Hide the file input element */
-}
+        .upload-section {
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-label {
-    display: block;
-    width: 100%;
-    max-width: 200px;
-    margin: 0 auto;
-    text-align: center;
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-}
+        label {
+            display: block;
+            width: 100%;
+            max-width: 200px;
+            margin: 0 auto;
+            text-align: center;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
 
-#uploadedImages {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 20px;
-}
+        input[type="file"] {
+            display: none;
+        }
 
-img {
-    margin: 10px;
-    max-width: 200px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
+        #uploadedImages {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
 
-button {
-    display: block;
-    width: 100%;
-    max-width: 200px;
-    margin: 0 auto;
-    background-color: #28a745;
-    color: #fff;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
+        img {
+            margin: 10px;
+            max-width: 200px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+      .submit-section {
+            text-align: center;
+        }
 
-progress {
-    display: block;
-    width: 100%;
-    max-width: 200px;
-    margin: 0 auto;
-}
+        button {
+            display: block;
+            width: 100%;
+            max-width: 200px;
+            margin: 0 auto;
+            background-color: #28a745;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
 
-#progressStatus {
-    display: block;
-    text-align: center;
-    margin-top: 10px;
-}
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 20px;
-}
+        .progress-section {
+            text-align: center;
+            margin-top: 20px;
+        }
 
-h1 {
-    color: #333;
-    text-align: center;
-}
+        progress {
+            display: block;
+            width: 100%;
+            max-width: 200px;
+            margin: 0 auto;
+        }    
+    #progressStatus {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+        }
 
-input[type="file"] {
-    display: none; /* Hide the file input element */
-}
+        .result-section {
+            text-align: center;
+            margin-top: 20px;
+        }
 
-label {
-    display: block;
-    width: 100%;
-    max-width: 200px;
-    margin: 0 auto;
-    text-align: center;
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-#uploadedImages {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-img {
-    margin: 10px;
-    max-width: 200px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-button {
-    display: block;
-    width: 100%;
-    max-width: 200px;
-    margin: 0 auto;
-    background-color: #28a745;
-    color: #fff;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-progress {
-    display: block;
-    width: 100%;
-    max-width: 200px;
-    margin: 0 auto;
-}
-
-#progressStatus {
-    display: block;
-    text-align: center;
-    margin-top: 10px;
-}
-
+        .result-item {
+            margin-top: 10px;
+        }
     </style>
 </head>
 
 <body>
     <h1>PhotoChoper</h1>
-    <div>
-        <!-- File Input to Upload Pictures -->
+    <div class="upload-section">
+        <label for="imageInput">Drag and drop or click to upload pictures</label>
         <input type="file" id="imageInput" multiple accept="image/*">
-        <button onclick="uploadImages()">Upload</button>
-    </div>
-    <div>
-        <!-- Display Uploaded Images -->
-        <h2>Uploaded Images:</h2>
         <div id="uploadedImages"></div>
     </div>
-    <div>
-        <!-- Submit Button -->
+    <div class="submit-section">
         <button onclick="submitImages()">Submit</button>
     </div>
-    <div>
-        <!-- Progress Bar -->
+    <div class="progress-section">
         <h2>Progress:</h2>
         <progress id="progressBar" max="100" value="0"></progress>
         <span id="progressStatus">0%</span>
+    </div>
+    <div class="result-section">
+        <h2>Results:</h2>
+        <div id="resultContainer"></div>
     </div>
     <script src="script.js"></script>
 </body>
